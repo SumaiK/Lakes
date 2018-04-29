@@ -2,9 +2,9 @@
   <div class="row">
     <h1>Create a Holiday memory:</h1>
       <%= simple_form_for(@holiday) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :location %>
-        <%= f.input :details %>
+        <%= f.input :name, placeholder: "Name your special memory!", :label => false %>
+        <%= f.input :location, placeholder: "Where was your holiday?", :label => false %>
+        <%= f.input :details, placeholder: "Tell us about your Holiday", :label => false %>
         <%= f.input :start_date %>
         <%= f.input :end_date %>
         <%= f.button :submit, class: "btn btn-success" %>
