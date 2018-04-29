@@ -9,15 +9,18 @@ class UsersController < ApplicationController
   def show
     # @user = User.find(params[:id]) not needed cause of set_user method below
     set_user
+    authorize @user
   end
 
   def edit
     set_user
+    authorize @user
   end
 
   def update
     @user = current_user
     @user.update(user_params)
+    authorize @user
   end
 
   private

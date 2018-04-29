@@ -7,23 +7,35 @@ class HolidaysController < ApplicationController
 
   def show
     @holiday = Holiday.find(params[:id])
+    authorize @holiday
   end
 
   def new
     @holiday = Holiday.new
+    authorize @holiday
   end
 
   def create
     @project = Holiday.new(holiday_params)
+    authorize @holiday
   end
 
   def edit
     @holiday = Holiday.find(params[:id])
+    authorize @holiday
   end
 
   def update
     @holiday = current_user
     @holiday.update(holiday_params)
+    authorize @holiday
+  end
+
+  def destroy
+    @holiday = Holiday.find(params[:id])
+    @holiday.destroy
+    redirect_to holidays_path
+    authorize @holiday
   end
 
   private
