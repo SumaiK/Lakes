@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
-
+# gem 'pundit'
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
@@ -9,6 +9,8 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.1.6'
 gem 'redis'
+# gem 'pg_search'
+# gem 'carrierwave', '~> 1.2'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
@@ -17,6 +19,8 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+# gem 'cloudinary'
+# gem 'faker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
