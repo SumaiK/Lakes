@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501192148) do
+ActiveRecord::Schema.define(version: 20180502183244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "holiday_albums", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.integer "rating"
+    t.bigint "holiday_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["holiday_id"], name: "index_holiday_albums_on_holiday_id"
+  end
 
   create_table "holiday_invites", force: :cascade do |t|
     t.string "status"
@@ -59,6 +69,7 @@ ActiveRecord::Schema.define(version: 20180501192148) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "holiday_albums", "holidays"
   add_foreign_key "holiday_invites", "holidays"
   add_foreign_key "holiday_invites", "users"
   add_foreign_key "holidays", "users"

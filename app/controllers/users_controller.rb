@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     # @user = User.find(params[:id]) not needed cause of set_user method below
+    @holidays = Holiday.all
     set_user
     authorize @user
   end
@@ -20,6 +21,11 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
+    if @user.save
+      redirect_to users_path(@user)
+    else
+      render :new
+    end
     authorize @user
   end
 

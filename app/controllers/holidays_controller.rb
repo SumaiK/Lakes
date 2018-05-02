@@ -1,5 +1,5 @@
 class HolidaysController < ApplicationController
-  before_acion :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @holidays = Holidays.all
@@ -7,16 +7,22 @@ class HolidaysController < ApplicationController
 
   def show
     @holiday = Holiday.find(params[:id])
+    @holidays_albums = HolidayAlbums.all
     authorize @holiday
   end
 
   def new
-    @holiday = Holiday.new
+    @holiday = Holiday.new(holiday_params)
     authorize @holiday
   end
 
   def create
     @project = Holiday.new(holiday_params)
+    if holiday.save
+      redirect_to holidays_path(@holiday)
+    else
+      render :new
+    end
     authorize @holiday
   end
 
@@ -28,6 +34,11 @@ class HolidaysController < ApplicationController
   def update
     @holiday = current_user
     @holiday.update(holiday_params)
+    if holiday.save
+      redirect_to holiday_path(@holiday)
+    else
+      render :new
+    end
     authorize @holiday
   end
 
