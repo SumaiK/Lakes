@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     # @user = User.find(params[:id]) not needed cause of set_user method below
+    @holidays = Holiday.all
     set_user
     authorize @user
   end

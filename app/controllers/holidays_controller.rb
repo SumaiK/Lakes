@@ -1,5 +1,5 @@
 class HolidaysController < ApplicationController
-  before_acion :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @holidays = Holidays.all
@@ -7,11 +7,12 @@ class HolidaysController < ApplicationController
 
   def show
     @holiday = Holiday.find(params[:id])
+    @holidays_albums = HolidayAlbums.all
     authorize @holiday
   end
 
   def new
-    @holiday = Holiday.new
+    @holiday = Holiday.new(holiday_params)
     authorize @holiday
   end
 
