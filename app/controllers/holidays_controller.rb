@@ -18,6 +18,11 @@ class HolidaysController < ApplicationController
 
   def create
     @project = Holiday.new(holiday_params)
+    if holiday.save
+      redirect_to holidays_path(@holiday)
+    else
+      render :new
+    end
     authorize @holiday
   end
 
@@ -29,6 +34,11 @@ class HolidaysController < ApplicationController
   def update
     @holiday = current_user
     @holiday.update(holiday_params)
+    if holiday.save
+      redirect_to holiday_path(@holiday)
+    else
+      render :new
+    end
     authorize @holiday
   end
 

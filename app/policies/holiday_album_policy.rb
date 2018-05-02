@@ -1,4 +1,4 @@
-class HolidayPolicy < ApplicationPolicy
+class HolidayAlbumPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope
