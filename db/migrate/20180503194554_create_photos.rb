@@ -1,6 +1,7 @@
 class CreatePhotos < ActiveRecord::Migration[5.1]
   def change
     create_table :photos do |t|
+      # changed picture to title
       t.string :picture
       t.string :location
       t.text :caption
