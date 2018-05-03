@@ -1,5 +1,10 @@
 class PhotosController < ApplicationController
 
+  def show
+    @photo = Photo.find(params[:id])
+    authorize @photo
+  end
+
   def new
     @photo = Photo.new
   end
@@ -24,7 +29,7 @@ class PhotosController < ApplicationController
     if @photo.save
       redirect_to photo_path(@photo)
     else
-      render :new
+      render :edit
     end
   end
 
