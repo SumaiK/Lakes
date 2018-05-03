@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502183244) do
+ActiveRecord::Schema.define(version: 20180503194554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(version: 20180502183244) do
     t.index ["user_id"], name: "index_holidays_on_user_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "picture"
+    t.string "location"
+    t.text "caption"
+    t.integer "rating"
+    t.bigint "holiday_album_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["holiday_album_id"], name: "index_photos_on_holiday_album_id"
+    t.index ["user_id"], name: "index_photos_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,4 +86,6 @@ ActiveRecord::Schema.define(version: 20180502183244) do
   add_foreign_key "holiday_invites", "holidays"
   add_foreign_key "holiday_invites", "users"
   add_foreign_key "holidays", "users"
+  add_foreign_key "photos", "holiday_albums"
+  add_foreign_key "photos", "users"
 end

@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary'
+gem 'paperclip'
 # gem 'faker'
 
 group :development do

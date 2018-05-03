@@ -8,6 +8,7 @@ class HolidayAlbumsController < ApplicationController
   def create
     @holiday_album = HolidayAlbum.new(holiday_album_params)
     @holiday = Holiday.find(params[:holiday_id])
+    @holiday_album.holiday = @holiday
     if @holiday_album.save
       redirect_to holidays_album_path(@holiday_album)
     else

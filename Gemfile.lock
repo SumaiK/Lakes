@@ -53,6 +53,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    climate_control (0.2.0)
     cloudinary (1.9.0)
       aws_cf_signer
       rest-client
@@ -95,6 +96,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -104,6 +106,12 @@ GEM
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
+    paperclip (6.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     pg (0.21.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -182,6 +190,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    terrapin (0.6.0)
+      climate_control (>= 0.0.3, < 1.0)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -220,6 +230,7 @@ DEPENDENCIES
   font-awesome-sass (~> 4.7)
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
+  paperclip
   pg (~> 0.21)
   pry-byebug
   pry-rails
