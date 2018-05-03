@@ -1,4 +1,4 @@
-class HolidayAlbumController < ApplicationController
+class HolidayAlbumsController < ApplicationController
   def new
     @holiday_album = HolidayAlbum.new
     @holiday = Holiday.find(params[:holiday_id])
