@@ -2,7 +2,7 @@ class HolidaysController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @holidays = Holidays.all
+    @holiday = Holiday.all
   end
 
   def show

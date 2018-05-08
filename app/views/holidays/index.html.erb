@@ -1,7 +1,11 @@
-<h1>Latest Holiday's added:</h1>
+<div class="container-fluid">
+  <div class="full-page">
+    <h1>Latest Holiday's added:</h1>
 
-<% @holidays.each do |h| %>
-  <h2><%= h.name %></h2>
-  <h4><%= h.location %></h4>
-  <h4>Uploaded by: <%= @user.full_name %></h4>
-<% end %>
+    <% @holiday.each do |h| %>
+      <h2><%= h.name %></h2>
+      <h4><%= h.location %></h4>
+      <h4>Uploaded by: <%= @user.full_name %></h4>
+    <% end %>
+  </div>
+</div>
