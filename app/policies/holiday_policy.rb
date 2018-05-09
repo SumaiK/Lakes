@@ -1,12 +1,16 @@
 class HolidayPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all
     end
   end
 
+  def show?
+    true
+  end
+
   def create?
-    return true
+    true
   end
 
   def update?
