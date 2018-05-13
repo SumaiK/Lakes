@@ -1,5 +1,10 @@
 <div class="profile-page">
-  <h1><%= @user.full_name %>'s profile</h1>
+    <h1><%= @user.full_name %>'s profile</h1>
+    <% if @user.photo.present? %>
+      <div class="avatar-large" style="background-image: url('<%= cl_image_path @user.photo, height: 300, width: 400, crop: :fill %>');">
+    <% else %>
+      <div class="avatar-large" style="background-image: url('https://www.vccircle.com/wp-content/uploads/2017/03/default-profile.png?w=300')"></div>
+    <% end %>
 
   <ul>
     <li><%= @user.full_name %></li>
