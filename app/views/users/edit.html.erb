@@ -1,0 +1,35 @@
+<div class="cover">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-user-profile">
+        <h1>Edit Profile</h1>
+        <%= simple_form_for(@user) do |f| %>
+        <div class="row">
+          <div class="col-xs-12">
+            <%= f.input :full_name, placeholder: "Full Name" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.input :description, placeholder: 'Describe yourself...' %>
+            <%= f.input :birth_date, as: :date, start_year: Date.today.year - 70,
+                              end_year: Date.today.year - 12,
+                              order: [:day, :month, :year], required: true %>
+          </div>
+        </div>
+          <div class="div-label">
+            <label for="image">Upload a photo</label>
+            <div class="file_button_container">
+              <%= f.input :photo, label: false %>
+              <%= f.input :photo_cache, as: :hidden %>
+            </div>
+          </div>
+          <%= f.submit "Save your profile changes", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+

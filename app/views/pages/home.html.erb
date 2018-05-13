@@ -1,2 +1,9 @@
-<h1>Lake District Poets</h1>
-<p>An annual gathering of friends at the former home of Willian Wordsworth</p>
+<!--main-page banner, search bar and button-->
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path("glenridding-camping.jpg",
+      width: 300, height: 300, crop: :thumb) %>)">
+  <div class="banner-content">
+    <h1 style="font-family: 'Dancing Script', cursive !important;"><%= link_to "Lake District Poets", users_path %></h1>
+    <p>Search here:</p>
+  </div>
+</div>
+

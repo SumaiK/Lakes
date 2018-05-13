@@ -8,8 +8,10 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :users, only: [:index, :show, :edit, :update]
-  resources :photos, only: [:new, :edit, :update, :destroy]
+  resources :users, only: [:index, :show, :edit, :update] do
+    resources :photos, only: [:new, :edit, :update, :destroy]
+  end
+
   resources :holidays do
     resources :holiday_invites, only: [:new, :create]
     resources :holiday_albums, only: [:new, :edit, :update]

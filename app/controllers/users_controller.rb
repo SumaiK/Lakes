@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_acion :set_user, only: [:show, :edit, :update]
-  before_acion :authenticate_user!
+  before_action :set_user, only: [:show, :edit, :update]
+  # before_action :authenticate_user!
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def show
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     if @user.save
-      redirect_to users_path(@user)
+      redirect_to user_path(@user)
     else
       render :new
     end

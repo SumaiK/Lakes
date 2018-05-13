@@ -1,1 +1,22 @@
 // Specific CSS for your home-page
+.banner {
+  height: 100vh;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-content {
+  color: white;
+  text-align: center;
+}
+
+.banner-content {
+h1 {
+  font-family: 'Dancing Script', cursive !important;
+  font-size: 60px !important;
+  margin-bottom: 100px;
+  }
+}
+

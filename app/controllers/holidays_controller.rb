@@ -2,7 +2,7 @@ class HolidaysController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @holidays = Holidays.all
+    @holidays = Holiday.all
   end
 
   def show
@@ -12,14 +12,14 @@ class HolidaysController < ApplicationController
   end
 
   def new
-    @holiday = Holiday.new(holiday_params)
+    @holiday = Holiday.new
     authorize @holiday
   end
 
   def create
-    @project = Holiday.new(holiday_params)
-    if holiday.save
-      redirect_to holidays_path(@holiday)
+    @holiday = Holiday.new
+    if @holiday.save
+      redirect_to holiday_path(@holiday)
     else
       render :new
     end
@@ -32,7 +32,7 @@ class HolidaysController < ApplicationController
   end
 
   def update
-    @holiday = current_user
+    @holiday = Holiday.find(params[:id])
     @holiday.update(holiday_params)
     if holiday.save
       redirect_to holiday_path(@holiday)
@@ -52,7 +52,7 @@ class HolidaysController < ApplicationController
   private
 
   def holdiay_params
-    params.require(:holiday).permit(:name, :location, :details, :date_start, :date_end, :photo)
+    params.require(:holiday).permit(:name, :location, :details, :date_start, :date_end)
   end
 
 end
