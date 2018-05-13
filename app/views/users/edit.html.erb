@@ -11,14 +11,11 @@
           </div>
           <div class="col-xs-12">
             <%= f.input :description, placeholder: 'Describe yourself...' %>
-          </div>
-          <div class="col-xs-12">
-
+            <%= f.input :birth_date, as: :date, start_year: Date.today.year - 70,
+                              end_year: Date.today.year - 12,
+                              order: [:day, :month, :year], required: true %>
           </div>
         </div>
-
-          <div class="form-group">
-          </div>
           <div class="div-label">
             <label for="image">Upload a photo</label>
 
