@@ -16,7 +16,7 @@
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
-        <div class="dropdown">
+        <div class="dropdown" id="menu-trigger">
 
           <% if current_user.photo? %>
             <img src='<%= cl_image_tag current_user.photo %>' class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">

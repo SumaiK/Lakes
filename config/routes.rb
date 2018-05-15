@@ -17,5 +17,9 @@ Rails.application.routes.draw do
     resources :holiday_albums, only: [:new, :edit, :update]
   end
 
+  resources :holiday_albums do
+    resources :photos, only: [:index, :show, :edit, :update, :destroy]
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

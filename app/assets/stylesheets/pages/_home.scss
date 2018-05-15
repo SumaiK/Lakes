@@ -13,10 +13,19 @@
 }
 
 .banner-content {
-h1 {
-  font-family: 'Dancing Script', cursive !important;
-  font-size: 60px !important;
-  margin-bottom: 100px;
+  h1 {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 60px !important;
+    margin-bottom: 100px;
+    color: #db5461;
   }
 }
 
+ .ldp :hover {
+    text-decoration: none;
+    color: #f1edee !important;
+  }
+
+.ldp {
+  color: red;
+ }
