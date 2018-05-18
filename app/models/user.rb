@@ -6,8 +6,7 @@ class User < ApplicationRecord
   has_many :holiday_invites
   has_many :photos
   has_many :holiday_albums, through: :photos
-
-  # has_many :my_holidays, class_name: "Holiday", foreign_key: "user_id", dependant: :destroy
+  has_many :my_holidays, foreign_key: "user_id", class_name: "Holiday"
 
   validates :full_name, presence: :true
 

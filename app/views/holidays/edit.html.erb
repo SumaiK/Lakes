@@ -5,8 +5,12 @@
         <%= f.input :name, placeholder: "Name your special memory!", :label => false %>
         <%= f.input :location, placeholder: "Where was your holiday?", :label => false %>
         <%= f.input :details, placeholder: "Tell us about your Holiday", :label => false %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
+        <%= f.input :start_date, as: :date, start_year: Date.today.year - 20,
+                              end_year: Date.today.year,
+                              order: [:day, :month, :year], required: true %>
+        <%= f.input :end_date, as: :date, start_year: Date.today.year - 20,
+                              end_year: Date.today.year,
+                              order: [:day, :month, :year], required: true %>
         <%= f.button :submit, class: "btn btn-success" %>
         <div class="back"><%= link_to "Back", holiday_path(@holiday) %></div>
         <!--<%= link_to "Delete Task", @task, class: "btn btn-danger", method: :delete %>-->
