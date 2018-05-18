@@ -3,9 +3,10 @@
     <h1>Latest Holiday's added:</h1>
 
     <% @holidays.each do |h| %>
-      <h2><%= h.name %></h2>
+      <h2><%= link_to h.name, holidays_path(@holiday) %></h2>
       <h3><%= h.location %></h3>
       <h4>Uploaded by: <%= h.owner.full_name %></h4>
     <% end %>
   </div>
 </div>
+
