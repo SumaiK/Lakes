@@ -12,11 +12,13 @@
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
 
 /* User Avatar */
-.avatar .navbar-wagon {
+.navbar-wagon .avatar {
   height: 35px;
   width: 35px;
   border-radius: 50%;
@@ -33,6 +35,26 @@
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*Mobile navbar*/
+.holi-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+.navbar-icon-item {
+  margin: 10px;
+}
+
+.dropdown {
+  color: #469AE0;
+  margin: 10px;
 }
 
 /* Navbar link */

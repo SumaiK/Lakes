@@ -1,30 +1,29 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+    <%= image_tag "ldplogo.jpeg", height: 50 %>
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <% if user_signed_in? %>
 
-    <% if user_signed_in? %>
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
 
       <!-- Links when logged in -->
       <%= link_to "Create a Holiday", new_holiday_path, class:"navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Find Holiday", holidays_path, class:"navbar-wagon-item navbar-wagon-link" %>
-
+      <%= link_to "Show Holidays", holidays_path, class:"navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
-        <div class="dropdown">
+        <div class="dropdown" id="menu-trigger">
 
           <% if current_user.photo? %>
-            <img src='<%= cl_image_tag current_user.photo %>' class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+            <img src='<%= cl_image_path current_user.photo %>' class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
           <% else %>
             <img src='https://www.vccircle.com/wp-content/uploads/2017/03/default-profile.png?w=300' class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
           <% end %>
 
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" id="menu-drop-down">
             <li>
               <%= link_to user_path(current_user) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
@@ -51,14 +50,29 @@
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="holi-icons">
+      <li><%= link_to  '<i class="fa fa-user"></i>' .html_safe, new_holiday_path, class:"navbar-icon-item" %></li>
+      <li><%= link_to  '<i class="fas fa-h-square"></i>' .html_safe, holidays_path, class:"navbar-icon-item" %></li>
+    </div>
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li>
+          <%= link_to user_path(current_user) do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to edit_user_path(current_user) do %>
+            <i class="fa fa-cog"></i> <%= t(".settings", default: "Settings") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i> <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
 </div>
-

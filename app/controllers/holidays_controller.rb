@@ -7,7 +7,7 @@ class HolidaysController < ApplicationController
 
   def show
     @holiday = Holiday.find(params[:id])
-    @holidays_albums = HolidayAlbums.all
+    # @holidays_albums = HolidayAlbums.all
     authorize @holiday
   end
 
@@ -17,7 +17,9 @@ class HolidaysController < ApplicationController
   end
 
   def create
-    @holiday = Holiday.new
+    @holiday = Holiday.new(holdiay_params)
+    @holiday = Holiday.find(params[:holiday_id])
+    @holiday.owner = current_user
     if @holiday.save
       redirect_to holiday_path(@holiday)
     else
