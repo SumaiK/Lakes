@@ -36,7 +36,7 @@ class HolidaysController < ApplicationController
   def update
     @holiday = Holiday.find(params[:id])
     @holiday.update(holiday_params)
-    if holiday.save
+    if @holiday.save
       redirect_to holiday_path(@holiday)
     else
       render :new
@@ -53,7 +53,7 @@ class HolidaysController < ApplicationController
 
   private
 
-  def holdiay_params
+  def holiday_params
     params.require(:holiday).permit(:name, :location, :details, :date_start, :date_end)
   end
 
