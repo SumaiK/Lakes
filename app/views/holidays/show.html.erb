@@ -2,8 +2,8 @@
 <ul>
   <li><%= @holiday.location %></li>
   <li><%= @holiday.details %></li>
-  <li><%= @holiday.start_date.strftime("%d/ %m/ %Y") %></li>
-  <li><%= @holiday.end_date.strftime("%d/ %m/ %Y") %></li>
+  <li><%= @holiday.start_date %></li>
+  <li><%= @holiday.end_date %></li>
 
   <%= link_to "Edit Holiday", edit_holiday_path(@holiday) %>
 </ul>

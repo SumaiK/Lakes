@@ -17,8 +17,7 @@ class HolidaysController < ApplicationController
   end
 
   def create
-    @holiday = Holiday.new(holdiay_params)
-    @holiday = Holiday.find(params[:holiday_id])
+    @holiday = Holiday.new(holiday_params)
     @holiday.owner = current_user
     if @holiday.save
       redirect_to holiday_path(@holiday)
