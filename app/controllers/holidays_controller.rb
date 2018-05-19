@@ -17,8 +17,7 @@ class HolidaysController < ApplicationController
   end
 
   def create
-    @holiday = Holiday.new(holdiay_params)
-    @holiday = Holiday.find(params[:holiday_id])
+    @holiday = Holiday.new(holiday_params)
     @holiday.owner = current_user
     if @holiday.save
       redirect_to holiday_path(@holiday)
@@ -36,7 +35,7 @@ class HolidaysController < ApplicationController
   def update
     @holiday = Holiday.find(params[:id])
     @holiday.update(holiday_params)
-    if holiday.save
+    if @holiday.save
       redirect_to holiday_path(@holiday)
     else
       render :new
@@ -53,8 +52,8 @@ class HolidaysController < ApplicationController
 
   private
 
-  def holdiay_params
-    params.require(:holiday).permit(:name, :location, :details, :date_start, :date_end)
+  def holiday_params
+    params.require(:holiday).permit(:name, :location, :details, :start_date, :end_date)
   end
 
 end

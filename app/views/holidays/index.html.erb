@@ -2,12 +2,10 @@
   <div class="full-page">
     <h1>Latest Holiday's added:</h1>
 
-    <% @holidays.each do |h| %>
-      <%= link_to holidays_path(@holiday) do %>
-        <h2><%= h.name %></h2>
-      <% end %>
-      <h3><%= h.location %></h3>
-      <h4>Uploaded by: <%= h.owner.full_name %></h4>
+    <% @holidays.each do |holiday| %>
+      <h2><%= link_to holiday.name, holiday_path(holiday) %></h2>
+      <h3><%= holiday.location %></h3>
+      <h4>Uploaded by: <%= holiday.owner.full_name %></h4>
     <% end %>
   </div>
 </div>
