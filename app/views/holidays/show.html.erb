@@ -2,10 +2,12 @@
 <ul>
   <li><%= @holiday.location %></li>
   <li><%= @holiday.details %></li>
-  <li><%= @holiday.start_date %></li>
-  <li><%= @holiday.end_date %></li>
+  <li><%= @holiday.start_date.to_formatted_s(:long) %></li>
+  <li><%= @holiday.end_date.to_formatted_s(:long) %></li>
+  <li><%= @holiday.owner.full_name %></li>
 
   <%= link_to "Edit Holiday", edit_holiday_path(@holiday) %>
 </ul>
 
-
+  <div class="holiday_invite">
+  </div>
