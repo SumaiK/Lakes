@@ -1,6 +1,10 @@
 class HolidayAlbumsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :show]
 
+  def index
+    @holday_albums = HolidayAlbum.all
+  end
+
   def new
     @holiday_album = HolidayAlbum.new
     @holiday = Holiday.find(params[:holiday_id])
