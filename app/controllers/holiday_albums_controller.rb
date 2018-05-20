@@ -7,13 +7,16 @@ class HolidayAlbumsController < ApplicationController
 
   def create
     @holiday_album = HolidayAlbum.new(holiday_album_params)
-    @holiday = Holiday.find(params[:holiday_id])
     @holiday_album.holiday = @holiday
+    @holiday = Holiday.find(params[:holiday_id])
+    # @user = User.where(full_name: user_params[:user_id]).first
+    # @holiday_album.user = @user
     if @holiday_album.save
       redirect_to holidays_album_path(@holiday_album)
     else
       render :new
     end
+    authorize @holiday_album
   end
 
   def edit
@@ -44,6 +47,6 @@ class HolidayAlbumsController < ApplicationController
   private
 
   def holiday_album_params
-    params.require(:holiday_album).permit(:name)
+    params.require(:holiday_album).permit(:name, :image)
   end
 end

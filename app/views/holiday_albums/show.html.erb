@@ -1,0 +1,7 @@
+<h1> Your holiday Album:</h1>
+
+<ul class="album">
+  <li><%= @holiday_album.name %></li>
+  <li><%= @holiday_album.Holiday.owner %></li>
+  <li><%= @holiday_album.created_at.strftime("%d/ %m/ %Y") %></li>
+</ul>
