@@ -1,19 +1,26 @@
 class HolidayAlbumsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :show]
+
   def new
     @holiday_album = HolidayAlbum.new
     @holiday = Holiday.find(params[:holiday_id])
     authorize @holiday_album
   end
 
+  def show
+    @holiday_album = HolidayAlbum.find(params[:id])
+    @holiday = Holiday.find(params[:id])
+    authorize @holiday_album
+  end
+
   def create
     @holiday_album = HolidayAlbum.new(holiday_album_params)
-    @holiday_album.holiday = @holiday
     @holiday = Holiday.find(params[:holiday_id])
-    # @user = User.where(full_name: user_params[:user_id]).first
-    # @holiday_album.user = @user
+    @holiday_album.holiday = @holiday
     if @holiday_album.save
-      redirect_to holidays_album_path(@holiday_album)
+      redirect_to holiday_album_path(@holiday_album)
     else
+      flash.now[:error] = "Album was not saved"
       render :new
     end
     authorize @holiday_album
