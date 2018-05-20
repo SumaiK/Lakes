@@ -1,7 +1,7 @@
 class HolidayInvitesPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all
     end
   end
 
@@ -10,12 +10,19 @@ class HolidayInvitesPolicy < ApplicationPolicy
   end
 
   def update?
-    record == user
+    record.user == user
   end
 
   def destroy?
     true
   end
 
+  def status_accept?
+    true
+  end
+
+  def status_decline?
+    true
+  end
 
 end
