@@ -1,0 +1,12 @@
+<h1>Edit your holiday Album:</h1>
+<div class="container">
+  <div class="row">
+    <h1>Edit your holiday Album:</h1>
+      <%= simple_form_for(@holiday_album) do |f| %>
+        <%= f.input :name, placeholder: "Want to rename your album?", :label => false %>
+        <%= f.input :image, placeholder: "Want a new image for your holiday?", :label => false %>
+        <%= f.button :submit, class: "btn btn-success" %>
+
+      <% end %>
+  </div>
+</div>

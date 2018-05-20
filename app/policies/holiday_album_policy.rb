@@ -10,6 +10,10 @@ class HolidayAlbumPolicy < ApplicationPolicy
   end
 
   def update?
+    return true
+  end
+
+  def update?
     record.user == user
   end
 

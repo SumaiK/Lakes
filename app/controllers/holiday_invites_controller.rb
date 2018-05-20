@@ -7,11 +7,12 @@ class HolidayInvitesController < ApplicationController
 
   def new
     @holiday_invite = HolidayInvite.new
-    @holiday = Holiday.find(params[:id])
-    authorize @holiday_invite
+    @holiday = Holiday.find(params[:holiday_id])
+    # authorize @holiday_invite
   end
 
   def create
+    @holiday_invite = HolidayInvite.new
     @holiday = Holiday.find(params[:project_id])
     @project_invite.update(user: current_user, holiday: @holiday, status: "pending")
     if @holiday_invite.save
@@ -68,4 +69,9 @@ class HolidayInvitesController < ApplicationController
     redirect_to holidays_path(@holiday_invite.holiday)
     authorize @holiday_invite
   end
+
+  # def holiday_inv_params
+
+  # end
+
 end

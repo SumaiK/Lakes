@@ -1,7 +1,19 @@
 class HolidayAlbumsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :show]
+
+  def index
+    @holday_albums = HolidayAlbum.all
+  end
+
   def new
     @holiday_album = HolidayAlbum.new
     @holiday = Holiday.find(params[:holiday_id])
+    authorize @holiday_album
+  end
+
+  def show
+    @holiday_album = HolidayAlbum.find(params[:id])
+    @holiday = Holiday.find(params[:id])
     authorize @holiday_album
   end
 
@@ -10,10 +22,12 @@ class HolidayAlbumsController < ApplicationController
     @holiday = Holiday.find(params[:holiday_id])
     @holiday_album.holiday = @holiday
     if @holiday_album.save
-      redirect_to holidays_album_path(@holiday_album)
+      redirect_to holiday_album_path(@holiday_album)
     else
+      flash.now[:error] = "Album was not saved"
       render :new
     end
+    authorize @holiday_album
   end
 
   def edit
@@ -44,6 +58,6 @@ class HolidayAlbumsController < ApplicationController
   private
 
   def holiday_album_params
-    params.require(:holiday_album).permit(:name)
+    params.require(:holiday_album).permit(:name, :image)
   end
 end
