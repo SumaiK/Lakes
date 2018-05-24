@@ -1,6 +1,6 @@
-<div class="profile-page">
+<div class="profile-page well">
     <h1><%= @user.full_name %>'s profile</h1>
-    <div class="photo-profile">
+    <div class="photo-profile well">
       <% if @user.photo.present? %>
         <div class="avatar-large" style="background-image: url('<%= cl_image_path @user.photo, height: 300, width: 400, crop: :fill %>');">
       <% else %>
@@ -8,7 +8,7 @@
       <% end %>
     </div>
 
-    <div class="user-details">
+    <div class="user-details well">
       <ul>
         <li><%= @user.full_name %></li>
         <li><%= @user.birth_date.to_formatted_s(:long) %></li>
