@@ -1,0 +1,13 @@
+<h1>All Albums for this Holiday</h1>
+<ul>
+  <% @holiday.holiday_albums.each do |holiday_album| %>
+    <li><%= link_to holiday_album.name, holiday_album_path(holiday_album) %></li>
+  <% end %>
+</ul>
+
+<div>
+<%= link_to "Create a new Album", new_holiday_holiday_album_path(@holiday), class: "btn btn-success" %>
+</div>
+<div>
+<%= link_to "Back to Holiday", holiday_path(@holiday) %>
+</div>
