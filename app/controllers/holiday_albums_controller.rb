@@ -6,14 +6,14 @@ class HolidayAlbumsController < ApplicationController
     @holiday = Holiday.find(params[:holiday_id])
   end
 
-  def new
-    @holiday_album = HolidayAlbum.new
-    @holiday = Holiday.find(params[:holiday_id])
+  def show
+    @holiday_album = HolidayAlbum.find(params[:id])
     authorize @holiday_album
   end
 
-  def show
-    @holiday_album = HolidayAlbum.find(params[:id])
+  def new
+    @holiday_album = HolidayAlbum.new
+    @holiday = Holiday.find(params[:holiday_id])
     authorize @holiday_album
   end
 
@@ -22,7 +22,6 @@ class HolidayAlbumsController < ApplicationController
     if @holiday_album.save
       redirect_to holiday_album_path(@holiday_album)
     else
-      flash.now[:error] = "Album was not saved"
       render :new
     end
     authorize @holiday_album

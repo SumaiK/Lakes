@@ -14,11 +14,11 @@ Rails.application.routes.draw do
 
   resources :holidays do
     resources :holiday_invites, only: [:index, :new, :create, :edit, :destroy]
-    resources :holiday_albums, only: [:index, :new, :show, :create, :edit, :update, :destroy]
+    resources :holiday_albums
   end
 
   resources :holiday_albums do
-    resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :photos
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
