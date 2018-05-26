@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <h1>Create a new Holiday Album:</h1>
-      <%= simple_form_for [@holiday, @holiday_album] do |f| %>
+      <%= simple_form_for @holiday_album do |f| %>
         <%= f.input :name, placeholder: "Name your album", :label => false %>
-        <%= f.input :image, :label => false %>
-        <%= f.input :image_cache, as: :hidden  %>
+        <%= f.input :image %>
+        <%= f.input :image_cache, as: :hidden %>
         <%= f.button :submit, class: "btn btn-success" %>
 
       <% end %>
