@@ -7,7 +7,7 @@ class HolidaysController < ApplicationController
 
   def show
     @holiday = Holiday.find(params[:id])
-    # @holidays_albums = HolidayAlbums.all
+    @holidays_albums = HolidayAlbum.all
     authorize @holiday
   end
 

@@ -13,7 +13,9 @@
                               order: [:day, :month, :year], required: true %>
         <%= f.button :submit, class: "btn btn-success" %>
         <div class="back"><%= link_to "Back", holiday_path(@holiday) %></div>
-        <!--<%= link_to "Delete Task", @task, class: "btn btn-danger", method: :delete %>-->
+        <div>
+          <%= link_to "Delete Holiday", holiday_path(@holiday), method: :delete, class: "btn btn-danger" %>
+        </div>
       <% end %>
   </div>
 </div>

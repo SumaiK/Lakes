@@ -1,0 +1,6 @@
+<h1>All Albums for this Holiday</h1>
+<ul>
+  <% @holiday.holiday_albums.each do |holiday_album| %>
+    <li><%= link_to holiday_album.name, holiday_album_path(holiday_album) %></li>
+  <% end %>
+</ul>

@@ -1,8 +1,9 @@
 class HolidayAlbumsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @holday_albums = HolidayAlbum.all
+    @holiday_albums = HolidayAlbum.all
+    @holiday = Holiday.find(params[:holiday_id])
   end
 
   def new
@@ -13,14 +14,11 @@ class HolidayAlbumsController < ApplicationController
 
   def show
     @holiday_album = HolidayAlbum.find(params[:id])
-    @holiday = Holiday.find(params[:id])
     authorize @holiday_album
   end
 
   def create
     @holiday_album = HolidayAlbum.new(holiday_album_params)
-    @holiday = Holiday.find(params[:holiday_id])
-    @holiday_album.holiday = @holiday
     if @holiday_album.save
       redirect_to holiday_album_path(@holiday_album)
     else

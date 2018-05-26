@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :holidays do
-    resources :holiday_invites, only: [:new, :create]
+    resources :holiday_invites, only: [:index, :new, :create, :edit, :destroy]
     resources :holiday_albums, only: [:index, :new, :show, :create, :edit, :update, :destroy]
   end
 
