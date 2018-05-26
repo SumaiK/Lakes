@@ -13,7 +13,6 @@ class HolidayAlbumsController < ApplicationController
 
   def new
     @holiday_album = HolidayAlbum.new
-    @holiday = Holiday.find(params[:holiday_id])
     authorize @holiday_album
   end
 
