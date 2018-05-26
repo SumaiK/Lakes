@@ -54,6 +54,6 @@ class HolidayAlbumsController < ApplicationController
   private
 
   def holiday_album_params
-    params.require(:holiday_album).permit(:name, :image)
+    params.require(:holiday_album).permit(:name)
   end
 end
