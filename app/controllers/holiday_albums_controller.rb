@@ -2,8 +2,8 @@ class HolidayAlbumsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    # @holiday = Holiday.find(params[:holiday_id])
     @holiday_albums = HolidayAlbum.all
+    @holiday = Holiday.find(params[:holiday_id])
   end
 
   def show
@@ -32,11 +32,11 @@ class HolidayAlbumsController < ApplicationController
 
   def edit
     @holiday_album = HolidayAlbum.find(params[:id])
+    # @holiday = Holiday.find(params[:holiday_id])
     # authorize @holiday_album
   end
 
   def update
-    # @holiday = Holiday.find(params[:holiday_id])
     @holiday_album = HolidayAlbum.find(params[:id])
     @holiday_album.update(holiday_album_params)
     if @holiday_album.save
@@ -44,14 +44,14 @@ class HolidayAlbumsController < ApplicationController
     else
       render :new
     end
-    authorize @holiday_album
+    # authorize @holiday_album
   end
 
   def destroy
     @holiday_album = HolidayAlbum.find(params[:id])
     @holiday_album.destroy
     redirect_to holiday_albums_path
-    # authorize @holiday_album
+    authorize @holiday_album
   end
 
   private
