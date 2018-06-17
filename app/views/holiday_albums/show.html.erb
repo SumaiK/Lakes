@@ -1,7 +1,13 @@
 <h1> Your holiday Album:</h1>
 
 <ul class="album">
-  <li><%= @holiday_album.name %></li>
+  <div>
+  <li><%= holiday_album.each do |holiday_album| %></li>
+    <li><%= holiday_album.name %></li>
+    <li><%= holiday_album.created_at.strftime("%d/%m/%Y") %></li>
+  <% end %>
+  </div>
   <li><%= @holiday_album.holiday.owner.full_name %></li>
-  <li><%= @holiday_album.created_at.strftime("%d/%m/%Y") %></li>
+  <li><%= link_to "Edit Album", edit_holiday_album_path(@holiday_album) %></li>
 </ul>
+
