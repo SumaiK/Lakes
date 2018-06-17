@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:index, :show, :edit, :update] do
-    resources :photos, only: [:new, :edit, :update, :destroy]
+    resources :photos
   end
 
   resources :holidays do
