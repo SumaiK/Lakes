@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def show
     @photo = Photo.find(params[:id])
@@ -25,7 +26,7 @@ class PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
-    @photo.update(photo_params)
+    @photo.update
     if @photo.save
       redirect_to photo_path(@photo)
     else
@@ -40,9 +41,9 @@ class PhotosController < ApplicationController
     authorize @photo
   end
 
-  private
+  # private
 
-  def photo_params
-    params.require(:photo).permit(:title, :location, :caption)
-  end
+  # def photo_params
+  #   params.require(:photo).permit(:title, :location, :caption)
+  # end
 end

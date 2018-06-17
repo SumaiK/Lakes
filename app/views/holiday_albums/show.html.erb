@@ -1,7 +1,19 @@
 <h1> Your holiday Album:</h1>
 
 <ul class="album">
+
   <li><%= @holiday_album.name %></li>
   <li><%= @holiday_album.holiday.owner.full_name %></li>
   <li><%= @holiday_album.created_at.strftime("%d/%m/%Y") %></li>
+  <li><%= link_to "Edit Album", edit_holiday_album_path(@holiday_album) %></li>
+  <li><%= link_to "Back to all Holidays", holidays_path(@holiday) %></li>
 </ul>
+
+<div class="new-album-photo">
+  <li><%= link_to "Add new photos", new_holiday_album_photo_path(@holiday_album) %></li>
+</div>
+
+
+<div class="holiday-album-photos">
+
+</div>

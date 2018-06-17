@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :holidays, through: :holiday_invites
   has_many :holiday_invites
   has_many :photos
+  has_many :holiday_albums, through: :holidays
   has_many :holiday_albums, through: :photos
   has_many :my_holidays, foreign_key: "user_id", class_name: "Holiday"
 

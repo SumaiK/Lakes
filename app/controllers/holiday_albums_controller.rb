@@ -32,26 +32,25 @@ class HolidayAlbumsController < ApplicationController
 
   def edit
     @holiday_album = HolidayAlbum.find(params[:id])
-    @holiday = Holiday.find(params[:holiday_id])
-    authorize @holiday_album
+    # @holiday = Holiday.find(params[:holiday_id])
+    # authorize @holiday_album
   end
 
   def update
     @holiday_album = HolidayAlbum.find(params[:id])
-    @holiday = Holiday.find(params[:holiday_id])
     @holiday_album.update(holiday_album_params)
     if @holiday_album.save
       redirect_to holiday_album_path(@holiday_album)
     else
       render :new
     end
-    authorize @holiday_album
+    # authorize @holiday_album
   end
 
   def destroy
     @holiday_album = HolidayAlbum.find(params[:id])
     @holiday_album.destroy
-    redirect_to holiday_album_path(@holiday_album)
+    redirect_to holiday_albums_path
     authorize @holiday_album
   end
 
